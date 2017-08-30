@@ -38,4 +38,20 @@ QUnit.module('Тестируем функцию sort', function () {
 		assert.strictEqual(sort('i love frontend'), 'Defnnort Elov I');
 		assert.strictEqual(sort('hello world'), 'Dlorw Ehllo');
 	});
+
+	QUnit.test('Функция корректно обрабатывает пустую строку', function (assert) {
+		assert.strictEqual(sort(''), '');
+	});
+
+	QUnit.test('Функция корректно обрабатывает null и undefined', function (assert) {
+		assert.strictEqual(sort(undefined), '');
+		assert.strictEqual(sort(null), '');
+	});
+
+	QUnit.test('Функция корректно обрабатывает аргумент неверного типа', function (assert) {
+		assert.strictEqual(sort(5), '');
+		assert.strictEqual(sort(false), '');
+		assert.strictEqual(sort(function(){}), '');
+		assert.strictEqual(sort({}), '');
+	});
 });
